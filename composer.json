@@ -1,0 +1,17 @@
+{
+  "name": "tudock/helloworld",
+  "description": "Tutorial Modul für die Magento 2 Blogserie.",
+  "require": {
+    "magento/magento-composer-installer": "*"
+  },
+  "type": "magento2-module",
+  "version": "0.0.1",
+  "extra": {
+    "map": [
+      [
+        "*",
+        "Tudock/HelloWorld"
+      ]
+    ]
+  }
+}
