@@ -1,13 +1,10 @@
 <?php
 /**
  * This template displays the text
- *     Hello, <Product Name>!
- *     How are you?
+ *     Hello World!
  *
  * The Magento localization system is used to translate the text.
  * The global function __ is used for that.
- *
- * @see \Tudock\HelloWorld\Block\HelloProduct
  *
  * Please note that you can no longer refer to the block as $this.
  * You need to use $block now.
@@ -19,13 +16,8 @@
  * @license   The MIT License (https://opensource.org/licenses/MIT)
  */
 
-/** @var $block \Tudock\HelloWorld\Block\HelloProduct */
+/** @var $block \Magento\Framework\View\Element\Template */
 ?>
 <p>
-	<?php echo __('Hello') ?> , <?php echo $block->getProductName(); ?>!
-</p>
-<p>
-	<a href="<?php echo $block->getHelloWorldUrl() ?>">
-		<?php echo __('How are you?') ?>
-	</a>
+	<?php echo __('Hello World') ?>!
 </p>

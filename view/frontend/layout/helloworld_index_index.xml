@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * This file adds the block 'Block/HelloProduct.php' to all pages of the route
+ * helloworld.
+ *
+ * It renders the HelloWorld block to the main content.
+ *
+ * @see \Magento\Framework\View\Element\Template for the generic block we are using
+ *
+ * See catalog_product_view.xml, etc/frontend/routes.xml and Controller/Index/Index.php
+ * for more information.
+ *
+ * @category  Magento 2
+ * @package   Tudock_HelloWorld
+ * @copyright Copyright (c) 2016 Tudock GmbH (http://www.tudock.de/)
+ * @author    Marco Köpcke <marco.koepcke@tudock.de>
+ * @license   The MIT License (https://opensource.org/licenses/MIT)
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="hello-world" template="Tudock_HelloWorld::helloworld.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

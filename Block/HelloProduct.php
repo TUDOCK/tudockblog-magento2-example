@@ -24,4 +24,11 @@ class HelloProduct extends \Magento\Catalog\Block\Product\View\AbstractView {
 	public function getProductName() {
 		return $this->getProduct()->getName();
 	}
+
+	/**
+	 * Get the URL that points to the helloworld_index_index route.
+	 */
+	public function getHelloWorldUrl() {
+		return $this->getUrl('helloworld/index/index');
+	}
 }
