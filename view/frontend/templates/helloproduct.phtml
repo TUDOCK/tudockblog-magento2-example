@@ -1,0 +1,29 @@
+<?php
+/**
+ * This template displays the text
+ *     Hello, <Product Name>!
+ *     How are you?
+ *
+ * The Magento localization system is used to translate the text.
+ * The global function __ is used for that.
+ *
+ * @see \Tudock\HelloWorld\Block\HelloProduct
+ *
+ * Please note that you can no longer refer to the block as $this.
+ * You need to use $block now.
+ *
+ * @category  Magento 2
+ * @package   Tudock_HelloWorld
+ * @copyright Copyright (c) 2016 Tudock GmbH (http://www.tudock.de/)
+ * @author    Marco Köpcke <marco.koepcke@tudock.de>
+ * @license   The MIT License (https://opensource.org/licenses/MIT)
+ */
+
+/** @var $block \Tudock\HelloWorld\Block\HelloProduct */
+?>
+<p>
+	<?php echo __('Hello') ?> , <?php echo $block->getProductName(); ?>!
+</p>
+<p>
+	<?php echo __('How are you?') ?>
+</p>
