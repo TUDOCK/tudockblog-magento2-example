@@ -6,12 +6,10 @@
   },
   "type": "magento2-module",
   "version": "0.0.1",
-  "extra": {
-    "map": [
-      [
-        "*",
-        "Tudock/HelloWorld"
-      ]
-    ]
+  "autoload": {
+    "files": [ "registration.php" ],
+      "psr-4": {
+        "Tudock\\HelloWorld\\": ""
+    }
   }
 }
