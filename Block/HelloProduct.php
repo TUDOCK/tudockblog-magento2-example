@@ -17,12 +17,44 @@ namespace Tudock\HelloWorld\Block;
 
 class HelloProduct extends \Magento\Catalog\Block\Product\View\AbstractView {
 
+	protected $_helloTextFactory;
+
+	/**
+	 * @param \Magento\Catalog\Block\Product\Context $context
+	 * @param \Magento\Framework\Stdlib\ArrayUtils $arrayUtils
+	 * @param array $data
+	 */
+	public function __construct(
+		\Magento\Catalog\Block\Product\Context $context,
+		\Magento\Framework\Stdlib\ArrayUtils $arrayUtils,
+		array $data,
+
+		\Tudock\HelloWorld\Model\HelloTextFactory $helloTextFactory
+	) {
+		parent::__construct($context, $arrayUtils, $data);
+
+		$this->_helloTextFactory = $helloTextFactory;
+	}
+
 	/**
 	 * Get the name of the current product
 	 * @return string
 	 */
 	public function getProductName() {
 		return $this->getProduct()->getName();
+	}
+
+	/**
+	 * Get product-specifc text
+	 * @todo Currently only generates a fixed text
+	 * @return string
+	 */
+	public function getText() {
+		$helloText = $this->_helloTextFactory->create();
+		$helloText
+			->setProduct($this->getProduct())
+			->setText('Das ist ein Test');
+		return $helloText->getText();
 	}
 
 	/**
