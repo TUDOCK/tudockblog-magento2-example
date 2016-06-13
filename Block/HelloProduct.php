@@ -17,7 +17,7 @@ namespace Tudock\HelloWorld\Block;
 
 class HelloProduct extends \Magento\Catalog\Block\Product\View\AbstractView {
 
-	protected $_helloTextFactory;
+	protected $_helloTextCollectionFactory;
 
 	/**
 	 * @param \Magento\Catalog\Block\Product\Context $context
@@ -29,11 +29,11 @@ class HelloProduct extends \Magento\Catalog\Block\Product\View\AbstractView {
 		\Magento\Framework\Stdlib\ArrayUtils $arrayUtils,
 		array $data,
 
-		\Tudock\HelloWorld\Model\HelloTextFactory $helloTextFactory
+		\Tudock\HelloWorld\Model\ResourceModel\HelloText\CollectionFactory $helloTextCollectionFactory
 	) {
 		parent::__construct($context, $arrayUtils, $data);
 
-		$this->_helloTextFactory = $helloTextFactory;
+		$this->_helloTextCollectionFactory = $helloTextCollectionFactory;
 	}
 
 	/**
@@ -46,15 +46,21 @@ class HelloProduct extends \Magento\Catalog\Block\Product\View\AbstractView {
 
 	/**
 	 * Get product-specifc text
-	 * @todo Currently only generates a fixed text
 	 * @return string
 	 */
 	public function getText() {
-		$helloText = $this->_helloTextFactory->create();
-		$helloText
-			->setProduct($this->getProduct())
-			->setText('Das ist ein Test');
-		return $helloText->getText();
+		$helloTextCollection = $this->_helloTextCollectionFactory->create();
+		$helloTextCollection->addProductFilter($this->getProduct());
+
+		$entireText = "";
+		foreach($helloTextCollection as $helloText) {
+			$entireText .= $helloText->getText();
+		}
+
+		if ($entireText == "") {
+			$entireText = "Leider hat mich niemand lieb :(";
+		}
+		return $entireText;
 	}
 
 	/**

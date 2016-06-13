@@ -24,11 +24,23 @@ class HelloText extends \Magento\Framework\Model\AbstractModel implements \Tudoc
 	public function __construct(
 		\Magento\Framework\Model\Context $context,
 		\Magento\Framework\Registry $registry,
-		\Magento\Catalog\Model\ProductFactory $productFactory
+		\Magento\Catalog\Model\ProductFactory $productFactory,
+		\Tudock\HelloWorld\Model\ResourceModel\HelloText $resource = null,
+		\Tudock\HelloWorld\Model\ResourceModel\HelloText\Collection $resourceCollection = null
 	) {
-		parent::__construct($context, $registry);
+		parent::__construct($context, $registry, $resource, $resourceCollection);
 
 		$this->_productFactory = $productFactory;
+	}
+
+	/**
+	 * Initialize resource model
+	 *
+	 * @return void
+	 */
+	protected function _construct()
+	{
+		$this->_init('Tudock\HelloWorld\Model\ResourceModel\HelloText');
 	}
 
 	/**
