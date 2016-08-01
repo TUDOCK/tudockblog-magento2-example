@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * This XML defines all event observers for the frontend.
+ *
+ * @category  Magento 2
+ * @package   Tudock_HelloWorld
+ * @copyright Copyright (c) 2016 Tudock GmbH (http://www.tudock.de/)
+ * @author    Marco Köpcke <marco.koepcke@tudock.de>
+ * @license   The MIT License (https://opensource.org/licenses/MIT)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="catalog_product_load_after">
+        <observer name="helloworld_inject" instance="Tudock\HelloWorld\Observer\ProductLoadInjecter" shared="false" />
+    </event>
+</config>

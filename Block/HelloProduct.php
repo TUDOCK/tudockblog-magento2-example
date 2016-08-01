@@ -17,7 +17,18 @@ namespace Tudock\HelloWorld\Block;
 
 class HelloProduct extends \Magento\Catalog\Block\Product\View\AbstractView {
 
+	/**
+	 * A factory used to load a helloText collection
+	 *
+	 * @var \Tudock\HelloWorld\Model\ResourceModel\HelloText\CollectionFactory
+	 */
 	protected $_helloTextCollectionFactory;
+
+	/**
+	 * The data helper of this module
+	 * @var \Tudock\HelloWorld\Helper\Data
+	 */
+	protected $_dataHelper;
 
 	/**
 	 * @param \Magento\Catalog\Block\Product\Context $context
@@ -28,12 +39,13 @@ class HelloProduct extends \Magento\Catalog\Block\Product\View\AbstractView {
 		\Magento\Catalog\Block\Product\Context $context,
 		\Magento\Framework\Stdlib\ArrayUtils $arrayUtils,
 		array $data,
-
-		\Tudock\HelloWorld\Model\ResourceModel\HelloText\CollectionFactory $helloTextCollectionFactory
+		\Tudock\HelloWorld\Model\ResourceModel\HelloText\CollectionFactory $helloTextCollectionFactory,
+		\Tudock\HelloWorld\Helper\Data $dataHelper
 	) {
 		parent::__construct($context, $arrayUtils, $data);
 
 		$this->_helloTextCollectionFactory = $helloTextCollectionFactory;
+		$this->_dataHelper = $dataHelper;
 	}
 
 	/**
@@ -61,6 +73,22 @@ class HelloProduct extends \Magento\Catalog\Block\Product\View\AbstractView {
 			$entireText = "Leider hat mich niemand lieb :(";
 		}
 		return $entireText;
+	}
+
+	/**
+	 * Return the color for the HelloProduct text.
+	 * @return string
+	 */
+	public function getColor() {
+		return $this->_dataHelper->getSomeColor();
+	}
+
+	/**
+	 * Returns the text that was injected in the ProductLoadInjecter
+	 * @return string
+	 */
+	public function getObserverText() {
+		return $this->getProduct()->getData('tudock_helloworld');
 	}
 
 	/**

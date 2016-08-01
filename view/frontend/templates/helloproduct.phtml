@@ -2,7 +2,7 @@
 /**
  * This template displays the text
  *     Hello, <Product Name>!
- *     How are you?
+ *     <Configured Product Text using HelloText model>
  *
  * The Magento localization system is used to translate the text.
  * The global function __ is used for that.
@@ -21,11 +21,14 @@
 
 /** @var $block \Tudock\HelloWorld\Block\HelloProduct */
 ?>
-<p>
+<p style="color:<?php echo $block->getColor() ?>">
 	<?php echo __('Hello') ?> , <?php echo $block->getProductName(); ?>!
 </p>
 <p>
 	<a href="<?php echo $block->getHelloWorldUrl() ?>">
 		<?php echo $block->getText() ?>
 	</a>
+</p>
+<p style="color:<?php echo $block->getColor() ?>">
+	<?php echo $block->getObserverText(); ?>
 </p>
